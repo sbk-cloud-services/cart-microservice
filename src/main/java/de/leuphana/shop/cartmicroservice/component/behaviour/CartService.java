@@ -6,7 +6,7 @@ public interface CartService {
 
     public Integer createCart();
     public Cart getCart(Integer cartId);
-    public Boolean addArticleToCart(Integer articleId);
+    public Boolean addArticleToCart(Integer articleId, Integer cartId);
 
     
 }
