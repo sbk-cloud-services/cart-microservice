@@ -11,8 +11,6 @@ public class Cart {
 
     public Cart(){
         this.cartItems = new HashSet<CartItem>();
-
-        //TODO: automatically assign ID via connector
     }
 
     public Set<CartItem> getCartItems() {
