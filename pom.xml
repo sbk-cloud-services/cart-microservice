@@ -32,6 +32,15 @@
 
     <dependencies>
         <!-- Dependencies -->
+
+
+        <dependency>
+            <groupId>de.leuphana.shop</groupId>
+            <artifactId>articlemicroservice</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        
     
     
         <!-- Testing dependencies-->
