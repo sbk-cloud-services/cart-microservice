@@ -9,7 +9,7 @@ public class CartServiceTest {
 
 
     @BeforeAll
-    public void BeforeAll(){
+    public static void BeforeAll(){
 
         cartService = new CartServiceImplementation();
         

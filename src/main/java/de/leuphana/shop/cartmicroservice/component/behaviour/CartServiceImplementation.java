@@ -6,20 +6,29 @@ public class CartServiceImplementation implements CartService {
 
     @Override
     public Integer createCart() {
-        // TODO Auto-generated method stub
-        return null;
+        
+
+
+        int cartId = 0;
+
+        return cartId;
     }
 
     @Override
     public Cart getCart(Integer cartId) {
-        // TODO Auto-generated method stub
-        return null;
+        
+        Cart retrievedCart = new Cart();
+
+
+        return retrievedCart;
     }
 
     @Override
     public Boolean addArticle2Cart(Integer articleId) {
-        // TODO Auto-generated method stub
-        return null;
+        
+
+        boolean isAdded = true;
+        return isAdded;
     }
 
 }
