@@ -24,7 +24,7 @@ public class CartServiceImplementation implements CartService {
     }
 
     @Override
-    public Boolean addArticle2Cart(Integer articleId) {
+    public Boolean addArticleToCart(Integer articleId) {
         
 
         boolean isAdded = true;

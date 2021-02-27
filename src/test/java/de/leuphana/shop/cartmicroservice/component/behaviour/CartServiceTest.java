@@ -35,7 +35,7 @@ public class CartServiceTest {
     public void canArticleBeAdded2Cart(){
 
         int articleId = 1;
-        Assertions.assertTrue(cartService.addArticle2Cart(articleId));
+        Assertions.assertTrue(cartService.addArticleToCart(articleId));
 
     }
 
