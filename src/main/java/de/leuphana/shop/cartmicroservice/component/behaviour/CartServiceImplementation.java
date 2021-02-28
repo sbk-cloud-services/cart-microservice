@@ -5,16 +5,9 @@ import de.leuphana.shop.cartmicroservice.connector.CartDatabaseConnector;
 
 public class CartServiceImplementation implements CartService {
 
-    private static CartService cartServiceImplementation;
     private CartDatabaseConnector cartDatabaseConnector;
 
-    public static CartService getInstance() {
-        if (cartServiceImplementation == null)
-            cartServiceImplementation = new CartServiceImplementation();
-        return cartServiceImplementation;
-    }
-
-    public void setCartDatabaseConnector(CartDatabaseConnector cartDatabaseConnector) {
+    public CartServiceImplementation(CartDatabaseConnector cartDatabaseConnector) {
         this.cartDatabaseConnector = cartDatabaseConnector;
     }
 

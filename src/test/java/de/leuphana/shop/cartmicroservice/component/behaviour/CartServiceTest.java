@@ -6,8 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import de.leuphana.shop.cartmicroservice.connector.CartDatabaseConnector;
-
 public class CartServiceTest {
     private static CartService cartService;
     private static ApplicationContext applicationContext;
@@ -15,11 +13,9 @@ public class CartServiceTest {
     @BeforeAll
     public static void BeforeAll() {
 
-        applicationContext = new ClassPathXmlApplicationContext("applicationcontext-jpa-connector.xml");
-        CartDatabaseConnector cartDatabaseConnector = (CartDatabaseConnector) applicationContext.getBean("cartDatabaseConnector");
+        applicationContext = new ClassPathXmlApplicationContext("applicationcontext.xml");
 
-        cartService = CartServiceImplementation.getInstance();
-        ((CartServiceImplementation)cartService).setCartDatabaseConnector(cartDatabaseConnector);
+        cartService = (CartService) applicationContext.getBean("cartServiceImplementation");
 
     }
 
