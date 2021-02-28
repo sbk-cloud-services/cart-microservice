@@ -1,7 +1,10 @@
 version: "3.0"
 services:
   cart:
-    build: .
+    build: 
+      context: .
+      args: 
+        m2: ${m2}
     links:
       - database
     ports:
@@ -14,3 +17,5 @@ services:
       MYSQL_DATABASE: cart
       MYSQL_USER: cart
       MYSQL_PASSWORD: 3ayYMPwCd2maT3yuPGS6dnY7XC4CRnvb
+    ports:
+       - "127.0.0.1:3306:3306"
