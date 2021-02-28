@@ -11,11 +11,11 @@ ARG m2
 RUN mkdir -p ~/.m2
 RUN echo ${m2} > ~/.m2/settings.xml
 
-RUN mvn install
+RUN mvn package
 
 RUN rm ~/.m2/settings.xml
 
 
 EXPOSE 8080
 
-ENTRYPOINT ["mvn", "spring-boot:run"]
+ENTRYPOINT ["java", "-jar", "target/cartservice-1.0-SNAPSHOT.jar"]
