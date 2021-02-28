@@ -12,12 +12,12 @@ public class CartServiceImplementation implements CartService {
     }
 
     @Override
-    public Integer createCart() {
+    public Cart createCart() {
 
         Cart cart = new Cart();
         cart.setId(cartDatabaseConnector.createCart(cart));
 
-        return cart.getId();
+        return cart;
     }
 
     @Override
