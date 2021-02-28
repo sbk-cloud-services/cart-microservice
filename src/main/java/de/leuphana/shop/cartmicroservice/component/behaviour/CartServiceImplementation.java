@@ -19,7 +19,7 @@ public class CartServiceImplementation implements CartService {
     }
 
     @Override
-    public Integer createCart() { //TODO: #6 Replace return value with Cart
+    public Integer createCart() {
 
         Cart cart = new Cart();
         cart.setId(cartDatabaseConnector.createCart(cart));
