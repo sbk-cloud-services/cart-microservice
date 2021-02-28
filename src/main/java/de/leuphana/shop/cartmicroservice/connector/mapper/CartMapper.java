@@ -15,11 +15,11 @@ public class CartMapper {
         mapper = DozerBeanMapperSingletonWrapper.getInstance();
     }
 
-    public static CartEntity mapCartToCartEntity(Cart customer) {
-        return mapper.map(customer, CartEntity.class);
+    public static CartEntity mapCartToCartEntity(Cart cart) {
+        return mapper.map(cart, CartEntity.class);
     }
 
-    public static Cart mapCustomerEntityToCustomer(CartEntity cartEntity) {
+    public static Cart mapCartEntityToCart(CartEntity cartEntity) {
         return mapper.map(cartEntity, Cart.class);
     }
     
