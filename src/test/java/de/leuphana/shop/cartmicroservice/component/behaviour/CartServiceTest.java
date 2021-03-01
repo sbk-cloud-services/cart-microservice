@@ -6,9 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-
 import de.leuphana.shop.cartmicroservice.component.structure.Cart;
-import de.leuphana.shop.cartmicroservice.connector.CartDatabaseConnector;
 
 public class CartServiceTest {
     private static CartService cartService;
