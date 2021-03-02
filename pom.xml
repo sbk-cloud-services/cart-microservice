@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.leuphana.shop</groupId>
-    <artifactId>cartservicemicroservice</artifactId>
+    <artifactId>cartmicroservice</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>cartservicemicroservice</name>
+    <name>cartmicroservice</name>
     <url>http://www.example.com</url>
 
     <repositories>
@@ -165,7 +165,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Package Repositoy</name>
-            <url>https://maven.pkg.github.com/sbk-cloud-services/authentication-microservice</url>
+            <url>https://maven.pkg.github.com/sbk-cloud-services/cart-microservice</url>
         </repository>
     </distributionManagement>
 </project>
