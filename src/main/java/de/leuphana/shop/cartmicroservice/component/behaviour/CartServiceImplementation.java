@@ -1,11 +1,17 @@
 package de.leuphana.shop.cartmicroservice.component.behaviour;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import de.leuphana.shop.cartmicroservice.component.structure.Cart;
+import de.leuphana.shop.cartmicroservice.connector.ArticleRestConnector;
 import de.leuphana.shop.cartmicroservice.connector.CartDatabaseConnector;
 
 public class CartServiceImplementation implements CartService {
 
     private CartDatabaseConnector cartDatabaseConnector;
+
+    @Autowired
+    private ArticleRestConnector articleRestConnector;
 
     public CartServiceImplementation(CartDatabaseConnector cartDatabaseConnector) {
         this.cartDatabaseConnector = cartDatabaseConnector;
