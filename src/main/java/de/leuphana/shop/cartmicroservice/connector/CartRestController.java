@@ -17,9 +17,6 @@ public class CartRestController {
     @Autowired
     ApplicationContext applicationContext;
 
-    @Autowired
-    private ArticleRestConnector articleRestConnector;
-
     @PostMapping("/carts")
     @ResponseBody
     public Cart createCart(){

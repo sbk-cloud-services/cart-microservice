@@ -1,6 +1,5 @@
 package de.leuphana.shop.cartmicroservice.component.behaviour;
 
-import java.util.List;
 import java.util.Optional;
 
 import de.leuphana.shop.cartmicroservice.component.structure.Cart;
@@ -44,14 +43,12 @@ public class CartServiceImplementation implements CartService {
             cartItem = new CartItem();
             cartItem.setArticleId(articleId);
             cartItem.setQuantity(1);
-            cartItem.setId(cartDatabaseConnector.createCartItem(cartItem));
+            cartItem = cartDatabaseConnector.createCartItem(cartItem);
 
-            List<CartItem> cartItems = cart.getCartItems();
-
-            cartItems.add(cartItem);
-
-            cart.setCartItems(cartItems);
+            cart.getCartItems().add(cartItem);
         }
+
+        cartDatabaseConnector.updateCart(cart);
     }
 
 }

@@ -4,11 +4,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import de.leuphana.shop.cartmicroservice.component.structure.Cart;
-
+@TestMethodOrder(OrderAnnotation.class)
 public class CartServiceTest {
     private static CartService cartService;
     private static ApplicationContext applicationContext;
@@ -34,11 +36,10 @@ public class CartServiceTest {
 
     @Test
     @Order(3)
-    public void canArticleBeAdded2Cart() {
+    public void canArticleBeAddedToCart() {
         Cart cart = cartService.createCart();
         Integer articleId = 1337;
         cartService.addArticleToCart(articleId, cart.getId());
-
     }
 
 }
