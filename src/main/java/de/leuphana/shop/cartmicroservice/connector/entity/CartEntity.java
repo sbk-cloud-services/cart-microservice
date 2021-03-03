@@ -1,14 +1,11 @@
 package de.leuphana.shop.cartmicroservice.connector.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
-import de.leuphana.shop.cartmicroservice.component.structure.CartItem;
 
 
 @Entity(name="Cart")
@@ -17,21 +14,12 @@ public class CartEntity {
     @Id @GeneratedValue
     private Integer id;
     
-    @Embedded
-    private Set<CartItem> cartItems;
+    private List<CartItemEntity> cartItems;
 
-    public CartEntity(){
-        this.cartItems = new HashSet<CartItem>();
+    public CartEntity() {
+        this.cartItems = new ArrayList<CartItemEntity>();
     }
-
-    public Set<CartItem> getCartItems() {
-        return cartItems;
-    }
-
-    public void setCartItems(Set<CartItem> cartItems) {
-        this.cartItems = cartItems;
-    }
-
+    
     public Integer getId() {
         return id;
     }
@@ -40,7 +28,12 @@ public class CartEntity {
         this.id = id;
     }
 
+    public List<CartItemEntity> getCartItems() {
+        return cartItems;
+    }
 
-    
-    
+    public void setCartItems(List<CartItemEntity> cartItems) {
+        this.cartItems = cartItems;
+    }
+
 }

@@ -4,4 +4,8 @@
         <class-a>de.leuphana.shop.cartmicroservice.component.structure.Cart</class-a>
         <class-b>de.leuphana.shop.cartmicroservice.connector.entity.CartEntity</class-b>
     </mapping>
+    <mapping>
+        <class-a>de.leuphana.shop.cartmicroservice.component.structure.CartItem</class-a>
+        <class-b>de.leuphana.shop.cartmicroservice.connector.entity.CartItemEntity</class-b>
+    </mapping>
 </mappings>

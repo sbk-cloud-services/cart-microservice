@@ -10,5 +10,5 @@ import feign.RequestLine;
 @FeignClient(name = "article", url = "http://article:8080")
 public interface ArticleRestConnector {
     @RequestLine("GET /articles/{id}")
-    Article contributors(@Param("id") Integer id);
+    Article getArticle(@Param("id") Integer id);
 }
