@@ -8,7 +8,6 @@ import de.leuphana.shop.cartmicroservice.connector.entity.CartEntity;
 
 public class CartMapper {
 
-
     private static Mapper mapper;
 
     static {

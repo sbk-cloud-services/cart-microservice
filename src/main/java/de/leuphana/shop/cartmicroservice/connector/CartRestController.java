@@ -20,7 +20,6 @@ public class CartRestController {
     @PostMapping("/carts")
     @ResponseBody
     public Cart createCart(){
-
         CartService cartService = (CartService) applicationContext.getBean("cartServiceImplementation");
 
         return cartService.createCart();
@@ -31,11 +30,9 @@ public class CartRestController {
     @GetMapping("/carts/{id}")
     @ResponseBody
     public Cart getCart(@PathVariable("id") Integer cartId){
-
         CartService cartService = (CartService) applicationContext.getBean("cartServiceImplementation");
 
         return cartService.getCart(cartId);
-
     }
 
     

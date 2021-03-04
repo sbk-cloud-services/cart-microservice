@@ -1,6 +1,9 @@
 package de.leuphana.shop.cartmicroservice.component.behaviour;
 
+import java.util.Optional;
+
 import de.leuphana.shop.cartmicroservice.component.structure.Cart;
+import de.leuphana.shop.cartmicroservice.component.structure.CartItem;
 import de.leuphana.shop.cartmicroservice.connector.CartDatabaseConnector;
 
 public class CartServiceImplementation implements CartService {
@@ -13,7 +16,6 @@ public class CartServiceImplementation implements CartService {
 
     @Override
     public Cart createCart() {
-
         Cart cart = new Cart();
         cart.setId(cartDatabaseConnector.createCart(cart));
 
@@ -22,17 +24,31 @@ public class CartServiceImplementation implements CartService {
 
     @Override
     public Cart getCart(Integer cartId) {
-
-        Cart retrievedCart = cartDatabaseConnector.getCart(cartId);
-
-        return retrievedCart;
+        return cartDatabaseConnector.getCart(cartId);
     }
 
     @Override
-    public Boolean addArticleToCart(Integer articleId, Integer cartId) {
+    public void addArticleToCart(Integer articleId, Integer cartId) {
 
-        boolean isAdded = true;
-        return isAdded;
+        Cart cart = this.getCart(cartId);
+
+        Optional<CartItem> cartItemOptional = cart.getCartItems().stream().filter(cartItem -> cartItem.getArticleId() == articleId).findFirst();
+
+        CartItem cartItem;
+
+        if(cartItemOptional.isPresent()) {
+            cartItem = cartItemOptional.get();
+            cartItem.setQuantity(cartItem.getQuantity() + 1);
+        } else {
+            cartItem = new CartItem();
+            cartItem.setArticleId(articleId);
+            cartItem.setQuantity(1);
+            cartItem = cartDatabaseConnector.createCartItem(cartItem);
+
+            cart.getCartItems().add(cartItem);
+        }
+
+        cartDatabaseConnector.updateCart(cart);
     }
 
 }

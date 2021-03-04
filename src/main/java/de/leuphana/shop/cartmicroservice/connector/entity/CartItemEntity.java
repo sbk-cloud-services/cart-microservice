@@ -1,6 +1,13 @@
-package de.leuphana.shop.cartmicroservice.component.structure;
+package de.leuphana.shop.cartmicroservice.connector.entity;
 
-public class CartItem {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity(name = "CartItem")
+public class CartItemEntity {
+    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     private Integer quantity;
     private Integer articleId;
@@ -22,7 +29,7 @@ public class CartItem {
     }
 
     public Integer getArticleId() {
-        return articleId;
+        return this.articleId;
     }
 
     public void setArticleId(Integer articleId) {
