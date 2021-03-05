@@ -38,7 +38,10 @@ public class CartRestController {
     
     @PostMapping("/carts/{id}/{article}")
     @ResponseBody
-    public void addArticleToCart(){ //TODO: #16 Implement addArticleToCart in RESTController once the ArticleService catches up.
+    public void addArticleToCart(@PathVariable("id") Integer cartId, @PathVariable("article") Integer articleId){
+
+        CartService cartService = (CartService) applicationContext.getBean("cartServiceImplementation");
+        cartService.addArticleToCart(articleId, cartId);
 
     }
     
