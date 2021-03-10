@@ -54,7 +54,26 @@ public class CartServiceImplementation implements CartService {
 
     @Override
     public void removeArticleFromCart(Integer articleId, Integer cartId) {
-        // TODO Auto-generated method stub
+
+        Cart cart = this.getCart(cartId);
+
+        Optional<CartItem> cartItemOptional = cart.getCartItems().stream()
+                .filter(cartItem -> cartItem.getArticleId() == articleId).findFirst();
+
+        CartItem cartItem;
+
+        if (cartItemOptional.isPresent()) {
+            cartItem = cartItemOptional.get();
+
+            if (cartItem.getQuantity() == 1) {
+                cart.getCartItems().remove(cartItem);
+
+            } else if (cartItem.getQuantity() > 1) {
+                cartItem.setQuantity(cartItem.getQuantity() - 1);
+            }
+
+        }
+        cartDatabaseConnector.updateCart(cart);
 
     }
 
