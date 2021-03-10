@@ -32,11 +32,12 @@ public class CartServiceImplementation implements CartService {
 
         Cart cart = this.getCart(cartId);
 
-        Optional<CartItem> cartItemOptional = cart.getCartItems().stream().filter(cartItem -> cartItem.getArticleId() == articleId).findFirst();
+        Optional<CartItem> cartItemOptional = cart.getCartItems().stream()
+                .filter(cartItem -> cartItem.getArticleId() == articleId).findFirst();
 
         CartItem cartItem;
 
-        if(cartItemOptional.isPresent()) {
+        if (cartItemOptional.isPresent()) {
             cartItem = cartItemOptional.get();
             cartItem.setQuantity(cartItem.getQuantity() + 1);
         } else {
@@ -49,6 +50,12 @@ public class CartServiceImplementation implements CartService {
         }
 
         cartDatabaseConnector.updateCart(cart);
+    }
+
+    @Override
+    public void removeArticleFromCart(Integer articleId, Integer cartId) {
+        // TODO Auto-generated method stub
+
     }
 
 }
