@@ -18,4 +18,4 @@ RUN rm ~/.m2/settings.xml
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "target/cartservice-1.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "target/cartmicroservice-1.0-SNAPSHOT.jar"]
