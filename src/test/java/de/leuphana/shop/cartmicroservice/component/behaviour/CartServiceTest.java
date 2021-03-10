@@ -2,14 +2,15 @@ package de.leuphana.shop.cartmicroservice.component.behaviour;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
-import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import de.leuphana.shop.cartmicroservice.component.structure.Cart;
+
 @TestMethodOrder(OrderAnnotation.class)
 public class CartServiceTest {
     private static CartService cartService;
@@ -40,6 +41,16 @@ public class CartServiceTest {
         Cart cart = cartService.createCart();
         Integer articleId = 1337;
         cartService.addArticleToCart(articleId, cart.getId());
+    }
+
+    @Test
+    @Order(4)
+    public void canArticleBeRemovedFromCart() {
+        Cart cart = cartService.createCart();
+        Integer articleId = 1337;
+        cartService.addArticleToCart(articleId, cart.getId());
+
+        cartService.removeArticleFromCart(articleId, cart.getId());
     }
 
 }
