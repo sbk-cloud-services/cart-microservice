@@ -49,4 +49,14 @@ public class CartRestController {
         cartService.removeArticleFromCart(articleId, cartId);
     }
 
+    @DeleteMapping("/carts/{id}")
+    @ResponseBody
+    public void checkoutCart(@PathVariable("id") Integer cartId) {
+        CartService cartService = (CartService) CartServiceApplication.getApplicationContext()
+                .getBean("cartServiceImplementation");
+
+        cartService.checkoutCart(cartId);
+
+    }
+
 }

@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.transaction.Transactional;
+
 import de.leuphana.shop.cartmicroservice.component.structure.Cart;
 import de.leuphana.shop.cartmicroservice.component.structure.CartItem;
 import de.leuphana.shop.cartmicroservice.connector.entity.CartEntity;
@@ -38,6 +39,12 @@ public class CartDatabaseConnector {
     public void updateCart(Cart cart) {
         CartEntity cartEntity = CartMapper.mapCartToCartEntity(cart);
         entityManager.merge(cartEntity);
+    }
+
+    @Transactional
+    public void deleteCart(Integer cartId) {
+        CartEntity cartEntity = entityManager.getReference(CartEntity.class, cartId);
+        entityManager.remove(cartEntity);
     }
 
     @Transactional
