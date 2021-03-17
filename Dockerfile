@@ -6,14 +6,13 @@ COPY src/ /service/src
 WORKDIR /service/
 
 
-ARG m2
 
-RUN mkdir -p ~/.m2
-RUN echo ${m2} > ~/.m2/settings.xml
+
+
 
 RUN mvn package
 
-RUN rm ~/.m2/settings.xml
+
 
 
 EXPOSE 8080

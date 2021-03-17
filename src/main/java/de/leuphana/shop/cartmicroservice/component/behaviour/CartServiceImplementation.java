@@ -2,6 +2,11 @@ package de.leuphana.shop.cartmicroservice.component.behaviour;
 
 import java.util.Optional;
 
+import org.dozer.MappingException;
+
+import de.leuphana.shop.cartmicroservice.component.behaviour.exception.CartDoesNotExist;
+import de.leuphana.shop.cartmicroservice.component.behaviour.exception.CartIdIsNull;
+import de.leuphana.shop.cartmicroservice.component.behaviour.exception.CartIsEmpty;
 import de.leuphana.shop.cartmicroservice.component.structure.Cart;
 import de.leuphana.shop.cartmicroservice.component.structure.CartItem;
 import de.leuphana.shop.cartmicroservice.connector.CartDatabaseConnector;
@@ -75,6 +80,39 @@ public class CartServiceImplementation implements CartService {
         }
         cartDatabaseConnector.updateCart(cart);
 
+    }
+
+    @Override
+    public void checkoutCart(Integer cartId) {
+        if (cartId != null) {
+
+            Cart cart = retrieveCartFromEntityManager(cartId);
+
+            if (!cart.getCartItems().isEmpty()) {
+
+                cartDatabaseConnector.deleteCart(cartId);
+
+            } else {
+                throw new CartIsEmpty();
+            }
+
+        } else {
+            throw new CartIdIsNull();
+        }
+
+    }
+
+    private Cart retrieveCartFromEntityManager(Integer cartId) {
+        try {
+            Cart cart = cartDatabaseConnector.getCart(cartId);
+
+            return cart;
+
+        } catch (MappingException e) {
+
+            throw new CartDoesNotExist();
+
+        }
     }
 
 }

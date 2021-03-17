@@ -10,4 +10,6 @@ public interface CartService {
     public void addArticleToCart(Integer articleId, Integer cartId);
 
     public void removeArticleFromCart(Integer articleId, Integer cartId);
+
+    public void checkoutCart(Integer cartId);
 }
