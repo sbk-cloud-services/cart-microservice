@@ -1,10 +1,9 @@
 version: "3.0"
 services:
   cart:
+    image: ghcr.io/sbk-cloud-services/cart-microservice:latest
     build:
       context: .
-      args:
-        m2: ${m2}
     links:
       - database
     ports:
