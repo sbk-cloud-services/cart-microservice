@@ -11,5 +11,5 @@ public interface CartService {
 
     public void removeArticleFromCart(Integer articleId, Integer cartId);
 
-    public void checkoutCart(Integer cartId);
+    public void deleteCart(Integer cartId);
 }
