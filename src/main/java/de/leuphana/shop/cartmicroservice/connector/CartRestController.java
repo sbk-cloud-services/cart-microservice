@@ -54,11 +54,11 @@ public class CartRestController {
 
     @DeleteMapping("/carts/{id}")
     @ResponseBody
-    public void checkoutCart(@PathVariable("id") Integer cartId) {
+    public void deleteCart(@PathVariable("id") Integer cartId) {
         CartService cartService = (CartService) CartServiceApplication.getApplicationContext()
                 .getBean("cartServiceImplementation");
 
-        cartService.checkoutCart(cartId);
+        cartService.deleteCart(cartId);
 
     }
 
