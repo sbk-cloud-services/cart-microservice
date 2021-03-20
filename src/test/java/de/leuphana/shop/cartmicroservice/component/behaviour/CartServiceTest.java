@@ -43,7 +43,7 @@ public class CartServiceTest {
     public void canArticleBeAddedToCart() {
         Cart cart = cartService.createCart();
         Integer articleId = 1337;
-        cartService.addArticleToCart(articleId, cart.getId());
+        cartService.addArticleToCart(articleId, cart.getId(), 132);
     }
 
     @Test
@@ -51,7 +51,7 @@ public class CartServiceTest {
     public void canArticleBeRemovedFromCart() {
         Cart cart = cartService.createCart();
         Integer articleId = 1337;
-        cartService.addArticleToCart(articleId, cart.getId());
+        cartService.addArticleToCart(articleId, cart.getId(), 132);
 
         cartService.removeArticleFromCart(articleId, cart.getId());
     }
@@ -65,7 +65,7 @@ public class CartServiceTest {
             Cart cart = cartService.createCart();
             Integer articleId = 1337;
 
-            cartService.addArticleToCart(articleId, cart.getId());
+            cartService.addArticleToCart(articleId, cart.getId(), 123);
 
             cartService.checkoutCart(cart.getId());
 
