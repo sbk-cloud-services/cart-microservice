@@ -33,22 +33,18 @@ public class CartServiceImplementation implements CartService {
     }
 
     @Override
-    public void addArticleToCart(Integer articleId, Integer cartId) {
+    public void addArticleToCart(Integer articleId, Integer cartId, Integer quantity) {
 
         Cart cart = this.getCart(cartId);
 
-        Optional<CartItem> cartItemOptional = cart.getCartItems().stream()
-                .filter(cartItem -> cartItem.getArticleId() == articleId).findFirst();
+        CartItem cartItem = getCartItemByArticleId(articleId, cart);
 
-        CartItem cartItem;
-
-        if (cartItemOptional.isPresent()) {
-            cartItem = cartItemOptional.get();
-            cartItem.setQuantity(cartItem.getQuantity() + 1);
+        if (cartItem != null) {
+            cartItem.setQuantity(quantity);
         } else {
             cartItem = new CartItem();
             cartItem.setArticleId(articleId);
-            cartItem.setQuantity(1);
+            cartItem.setQuantity(quantity);
             cartItem = cartDatabaseConnector.createCartItem(cartItem);
 
             cart.getCartItems().add(cartItem);
@@ -62,22 +58,12 @@ public class CartServiceImplementation implements CartService {
 
         Cart cart = this.getCart(cartId);
 
-        Optional<CartItem> cartItemOptional = cart.getCartItems().stream()
-                .filter(cartItem -> cartItem.getArticleId() == articleId).findFirst();
+        CartItem cartItem = getCartItemByArticleId(articleId, cart);
 
-        CartItem cartItem;
-
-        if (cartItemOptional.isPresent()) {
-            cartItem = cartItemOptional.get();
-
-            if (cartItem.getQuantity() == 1) {
-                cart.getCartItems().remove(cartItem);
-
-            } else if (cartItem.getQuantity() > 1) {
-                cartItem.setQuantity(cartItem.getQuantity() - 1);
-            }
-
+        if (cartItem != null) {
+            cart.getCartItems().remove(cartItem);
         }
+
         cartDatabaseConnector.updateCart(cart);
 
     }
@@ -113,6 +99,12 @@ public class CartServiceImplementation implements CartService {
             throw new CartDoesNotExist();
 
         }
+    }
+
+    private CartItem getCartItemByArticleId(Integer articleId, Cart cart) {
+        Optional<CartItem> cartItemOptional = cart.getCartItems().stream()
+                .filter(cartItem -> cartItem.getArticleId() == articleId).findFirst();
+        return cartItemOptional.isPresent() ? cartItemOptional.get() : null;
     }
 
 }

@@ -7,7 +7,7 @@ public interface CartService {
 
     public Cart getCart(Integer cartId);
 
-    public void addArticleToCart(Integer articleId, Integer cartId);
+    public void addArticleToCart(Integer articleId, Integer cartId, Integer quantity);
 
     public void removeArticleFromCart(Integer articleId, Integer cartId);
 
